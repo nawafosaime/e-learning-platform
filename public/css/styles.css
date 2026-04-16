@@ -1,0 +1,167 @@
+:root {
+  --brand: #3554d1;
+  --brand-light: #e9eeff;
+  --surface: #f7f8fc;
+  --text-soft: #667085;
+  --border-soft: #e7eaf3;
+  --success-soft: #dff7e9;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: #17202a;
+}
+
+.auth-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(53, 84, 209, 0.15), transparent 30%),
+    linear-gradient(180deg, #f8f9ff 0%, #f5f7fb 100%);
+}
+
+.app-body {
+  min-height: 100vh;
+}
+
+.shadow-soft {
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+  border-radius: 1rem;
+}
+
+.hero-card,
+.metric-card,
+.focus-box,
+.lesson-card,
+.quiz-card,
+.progress-card {
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.04);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.text-secondary,
+.form-text,
+.form-label,
+.nav-link {
+  color: var(--text-soft) !important;
+}
+
+.badge-soft {
+  display: inline-flex;
+  align-items: center;
+  background: var(--brand-light);
+  color: var(--brand);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-weight: 700;
+}
+
+.demo-box {
+  background: #f8faff;
+  border: 1px dashed #ccd5f5;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #2942b0;
+  border-color: #2942b0;
+}
+
+.form-control,
+.form-select {
+  min-height: 46px;
+  border-radius: 0.75rem;
+  border-color: #d4dbe8;
+}
+
+textarea.form-control {
+  min-height: auto;
+}
+
+.progress {
+  height: 0.8rem;
+  background: #e9edf6;
+  border-radius: 999px;
+}
+
+.progress-bar {
+  background: var(--brand);
+}
+
+.lesson-card + .lesson-card,
+.quiz-card + .quiz-card {
+  margin-top: 1rem;
+}
+
+.course-card {
+  height: 100%;
+}
+
+.course-card .card {
+  height: 100%;
+}
+
+.topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topic-list span {
+  background: #f0f4ff;
+  color: #2d4fb7;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.question-block {
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fbfcff;
+}
+
+.small-muted {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.empty-state {
+  padding: 1rem;
+  border: 1px dashed #c8d1e8;
+  border-radius: 1rem;
+  background: #fcfdff;
+  color: var(--text-soft);
+}
+
+@media (max-width: 768px) {
+  .hero-card,
+  .metric-card,
+  .focus-box,
+  .lesson-card,
+  .quiz-card,
+  .progress-card {
+    padding: 1rem;
+  }
+}
