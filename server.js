@@ -6,15 +6,24 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
+const connectDB = require("./src/config/db");
+const { attachUserFromToken, requireAuth, guestOnly } = require("./src/middleware/auth");
+
+const authRoutes = require("./src/routes/authRoutes");
+const courseRoutes = require("./src/routes/courseRoutes");
+const lessonRoutes = require("./src/routes/lessonRoutes");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const viewsDir = path.join(__dirname, "views");
 
 
+connectDB();
 app.use(morgan("dev"));
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(attachUserFromToken);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
@@ -24,6 +33,21 @@ app.get("/", (req, res) => {
   }
   return res.redirect("/login");
 });
+
+app.get("/login", guestOnly, (req, res) => {
+  res.sendFile(path.join(viewsDir, "login.html"));
+});
+
+app.get("/register", guestOnly, (req, res) => {
+  res.sendFile(path.join(viewsDir, "register.html"));
+});
+
+app.get("/app/course", requireAuth, (req, res) => {
+  res.sendFile(path.join(viewsDir, "course.html"));
+});
+
+app.use("/api/auth", authRoutes);
+app.use("/api/courses", courseRoutes);
 
 
 app.use((error, req, res, next) => {
