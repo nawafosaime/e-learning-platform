@@ -37,6 +37,7 @@ Add screenshots after running the project:
 - Lesson attachments
 
 ## Team Members
+https://github.com/nawafosaime/e-learning-platform/
 - Nawaf Naif Alotaibi
 - Abdulrahman alodhaib
 - Yazeed Alabdullatif
