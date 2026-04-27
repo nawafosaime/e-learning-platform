@@ -59,6 +59,7 @@ After each quiz, the platform detects the topics where the student made mistakes
 - View students' course progress through the API
 
 ## 5) System Flow
+```text
 Start
   ↓
 User registers or logs in
@@ -81,7 +82,7 @@ System checks role
       Take quiz
         ↓
       Track progress + weak topics
-
+```
 ## 6) Setup Instructions
 
 ### Requirements
@@ -121,7 +122,7 @@ Demo accounts after seeding:
 - Add richer analytics charts
 
 ## 8) Project Structure
-
+```text
 e-learning-platform/
 ├── public/
 │   ├── css/
@@ -137,7 +138,7 @@ e-learning-platform/
 ├── server.js
 ├── package.json
 └── README.md
-
+```
 
 ## 9) REST API 
 
