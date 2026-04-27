@@ -19,8 +19,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const viewsDir = path.join(__dirname, "views");
 
-
 connectDB();
+
 app.use(morgan("dev"));
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }));
@@ -44,6 +44,10 @@ app.get("/register", guestOnly, (req, res) => {
   res.sendFile(path.join(viewsDir, "register.html"));
 });
 
+app.get("/app/dashboard", requireAuth, (req, res) => {
+  res.sendFile(path.join(viewsDir, "dashboard.html"));
+});
+
 app.get("/app/course", requireAuth, (req, res) => {
   res.sendFile(path.join(viewsDir, "course.html"));
 });
@@ -58,9 +62,13 @@ app.get("/app/progress", requireAuth, (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
-
+app.use("/api", lessonRoutes);
 app.use("/api", quizRoutes);
 app.use("/api/progress", progressRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found." });
+});
 
 app.use((error, req, res, next) => {
   const status = error.status || 500;
