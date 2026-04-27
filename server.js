@@ -12,6 +12,8 @@ const { attachUserFromToken, requireAuth, guestOnly } = require("./src/middlewar
 const authRoutes = require("./src/routes/authRoutes");
 const courseRoutes = require("./src/routes/courseRoutes");
 const lessonRoutes = require("./src/routes/lessonRoutes");
+const quizRoutes = require("./src/routes/quizRoutes");
+const progressRoutes = require("./src/routes/progressRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -46,9 +48,19 @@ app.get("/app/course", requireAuth, (req, res) => {
   res.sendFile(path.join(viewsDir, "course.html"));
 });
 
+app.get("/app/quiz", requireAuth, (req, res) => {
+  res.sendFile(path.join(viewsDir, "quiz.html"));
+});
+
+app.get("/app/progress", requireAuth, (req, res) => {
+  res.sendFile(path.join(viewsDir, "progress.html"));
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 
+app.use("/api", quizRoutes);
+app.use("/api/progress", progressRoutes);
 
 app.use((error, req, res, next) => {
   const status = error.status || 500;
